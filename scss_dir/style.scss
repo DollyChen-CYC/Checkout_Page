@@ -1,0 +1,95 @@
+/* ------- reset CSS ------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a,
+a:hover,
+a:active,
+a:visited,
+a:focus {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+button,
+button:hover,
+button:active,
+button:focus {
+  border: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+button[disabled] {
+  pointer-events: none;
+}
+
+input:required,
+input:invalid {
+  box-shadow: none;
+}
+
+input:focus,
+textarea:focus,
+select,
+select:focus,
+a:focus {
+  outline: none;
+}
+
+/* ------- basic setting ------- */
+$body-font-family: "Noto Sans TC", sans-serif;
+// $light-bg: #e5e5e5;
+// $dark-bg: #121212;
+// $body-color: #2a2a2a;
+// $footer-bg: #f6f7f8;
+// $footer-color: #808080;
+// $footer-color-title: #2a2a2a;
+
+$white: #ffffff;
+$rose-pink: #f67599;
+// gray for border and horizontal line:
+$light-gray: #f0f0f5;
+// gray for inactive info:
+$neutrals-gray: #afb1bd;
+// gray for checked steps:
+$dark-gray: #333333;
+
+:root {
+  --bg-color: #e5e5e5;
+  --body-color: #2a2a2a;
+  --footer-bg: #f6f7f8;
+  --footer-color: #808080;
+  --footer-color-title: #2a2a2a;
+}
+
+[dark-theme="dark"] {
+  --bg-color: #121212;
+  --body-color: #{$white};
+  --footer-bg: #{$dark-gray};
+  --footer-color: #{$light-gray};
+  --footer-color-title: #{$white};  
+}
+
+
+
+/* ------- project styles starts here ------- */
+
+/* -------  ------- */
