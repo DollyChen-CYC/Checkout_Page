@@ -1,5 +1,7 @@
 /* ------- reset CSS ------- */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -24,6 +26,7 @@ a:focus {
   text-decoration: none;
   color: inherit;
   outline: none;
+  cursor: pointer;
 }
 
 button,
@@ -55,25 +58,25 @@ a:focus {
 }
 
 /* ------- basic setting ------- */
-$body-font-family: "Noto Sans TC", sans-serif;
-// $light-bg: #e5e5e5;
-// $dark-bg: #121212;
-// $body-color: #2a2a2a;
-// $footer-bg: #f6f7f8;
-// $footer-color: #808080;
-// $footer-color-title: #2a2a2a;
-
+$standard-font-family: "Noto Sans TC", sans-serif;
+$brand-font-family: "Lato","Noto Sans TC", sans-serif;
+$standard-font-size: 16px;
 $white: #ffffff;
 $rose-pink: #f67599;
+$shadow-gray: #f9f9f9;
 // gray for border and horizontal line:
 $light-gray: #f0f0f5;
 // gray for inactive info:
 $neutrals-gray: #afb1bd;
 // gray for checked steps:
 $dark-gray: #333333;
+$phone-width: 375px;
+$pad-width: 540px;
+$pc-width: 900px;
+$max-width: 1056px;
 
 :root {
-  --bg-color: #e5e5e5;
+  --bg-color: #{$white};
   --body-color: #2a2a2a;
   --footer-bg: #f6f7f8;
   --footer-color: #808080;
@@ -85,7 +88,24 @@ $dark-gray: #333333;
   --body-color: #{$white};
   --footer-bg: #{$dark-gray};
   --footer-color: #{$light-gray};
-  --footer-color-title: #{$white};  
+  --footer-color-title: #{$white};
+}
+
+// Mixins for RWD media queries
+@mixin pad-media {
+  @media all and (min-width: $pad-width) {
+    @content;
+  }
+}
+
+@mixin pc-media {
+  @media all and (min-width: $pc-width) {
+    @content;
+  }
+}
+
+%standard-boxshadow {
+  box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
 }
 
 // create shorthand sizing classes
@@ -93,7 +113,7 @@ $sizes: (
   25: 25%,
   50: 50%,
   75: 75%,
-  100: 100%, 
+  100: 100%,
 );
 
 /* shorthand sizing classes */
@@ -113,27 +133,27 @@ $multiple: (1, 2, 3, 4);
 @each $prop, $abbrev in (margin: m, padding: p) {
   @each $num in $multiple {
     .#{$abbrev}-#{$num} {
-      #{$prop}: $num * 0.25 * $spacer;
+      #{$prop}: $num * 0.5 * $spacer;
     }
     .#{$abbrev}t-#{$num} {
-      #{$prop}-top: $num * 0.25 * $spacer;
+      #{$prop}-top: $num * 0.5 * $spacer;
     }
     .#{$abbrev}r-#{$num} {
-      #{$prop}-right: $num * 0.25 * $spacer;
+      #{$prop}-right: $num * 0.5 * $spacer;
     }
     .#{$abbrev}b-#{$num} {
-      #{$prop}-bottom: $num * 0.25 * $spacer;
+      #{$prop}-bottom: $num * 0.5 * $spacer;
     }
     .#{$abbrev}l-#{$num} {
-      #{$prop}-left: $num * 0.25 * $spacer;
+      #{$prop}-left: $num * 0.5 * $spacer;
     }
     .#{$abbrev}x-#{$num} {
-      #{$prop}-left: $num * 0.25 * $spacer;
-      #{$prop}-right: $num * 0.25 * $spacer;
+      #{$prop}-left: $num * 0.5 * $spacer;
+      #{$prop}-right: $num * 0.5 * $spacer;
     }
     .#{$abbrev}y-#{$num} {
-      #{$prop}-top: $num * 0.25 * $spacer;
-      #{$prop}-bottom: $num * 0.25 * $spacer;
+      #{$prop}-top: $num * 0.5 * $spacer;
+      #{$prop}-bottom: $num * 0.5 * $spacer;
     }
   }
 }
@@ -195,10 +215,157 @@ $multiple: (1, 2, 3, 4);
   align-items: center;
 }
 
-%standard-boxshadow {
-  box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
+/* ------- project styles starts here ------- */
+body {
+  font-family: $standard-font-family;
+  font-size: $standard-font-size;
+  background-color: var(--bg-color);
+  color: var(--body-color);
 }
 
-/* ------- project styles starts here ------- */
+/* --- header --- */
+header {
+  height: 56px;
+  width: 100%;
+  position: relative;
 
-/* -------  ------- */
+  .header-menu {
+    height: 100%;
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+    @include pc-media {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .navbar-toggle-label {
+      width: 56px;
+      height: 56px;
+      font-size: 17px;
+      cursor: pointer;
+      line-height: 56px;
+      text-align: center;
+      @include pc-media {
+        display: none;
+      }
+    }
+    .header-actions {
+      height: 70px;
+      z-index: 1;
+      font-size: 20px;
+      box-shadow: 0 7px 7px 0 rgba(224, 228, 233, 0.1);
+      opacity: 0;
+      transform: scale(1, 0);
+      transform-origin: top;
+      transition: all 0.2s ease-in-out 0.01s;
+      @include pad-media {
+        font-size: 1rem;
+        opacity: 1;
+        transform: scale(1, 1);
+        position: absolute;
+        right: 0;
+        box-shadow: unset;
+      }
+      .header-link {
+        height: 70px;
+        @include pad-media{
+          height: 56px;
+        }
+        &:hover {
+          color: $rose-pink;
+        }
+        &:active {
+          background-color: $shadow-gray;
+        }
+      }
+    }
+  }
+
+  .brand {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    img {
+      width: 24px;
+      height: 24px;
+    }
+    .shop-name {
+      font-family: $brand-font-family;
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 0.75px;
+    }
+  }
+}
+
+nav {
+  width: 100%;
+  z-index: 1;
+  font-weight: 500;
+  opacity: 0;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: all 0.2s ease-in-out;
+  @include pc-media {
+    opacity: 1;
+    transform: scale(1, 1);
+    width: 50%;
+  }
+
+  .nav-list {
+    @include pc-media {
+      display: flex;
+    }
+  }
+
+  .nav-item {
+    width: 100vw;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+    @include pc-media {
+      margin-left: 0.5rem;
+      width: auto;
+      padding: 1rem 1rem 1rem 0;
+    }
+    .nav-link {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+    &:hover {
+      color: $rose-pink;
+    }
+    &:active {
+      background-color: $shadow-gray;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 14.5px;
+      right: 14.5px;
+      height: 2px;
+      background-color: $light-gray;
+      @include pc-media {
+        all: unset;
+      }
+    }
+  }
+}
+
+#navbar-toggle:checked {
+  ~ label {
+    color: $rose-pink;
+    ~ nav {
+      opacity: 1;
+      transform: scale(1, 1);
+      ~ .header-actions {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+    }
+  }
+}
