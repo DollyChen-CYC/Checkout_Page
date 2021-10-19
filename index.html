@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Lato:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Lato:wght@700;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
     integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   <link rel="stylesheet" href="./css_dir/style.css">
@@ -30,8 +31,10 @@
         </ul>
       </nav>
       <div class="header-actions d-flex justify-content-center">
-        <a href="#" class="header-link header-link-search px-3 d-flex align-items-center"><i class="fas fa-search"></i></a>
-        <a href="#" class="header-link header-link-shopping-cart px-3 d-flex align-items-center"><i class="fas fa-shopping-cart"></i></a>
+        <a href="#" class="header-link header-link-search px-3 d-flex align-items-center"><i
+            class="fas fa-search"></i></a>
+        <a href="#" class="header-link header-link-shopping-cart px-3 d-flex align-items-center"><i
+            class="fas fa-shopping-cart"></i></a>
         <a href="#" class="header-link header-link-dark px-3 d-flex align-items-center"><i class="fas fa-moon"></i></a>
         <a href="#" class="header-link header-link-light px-3 align-items-center d-none"><i class="far fa-sun"></i></a>
         <!-- use JS to control the toggle of d-flex / d-none -->
@@ -41,12 +44,64 @@
       <img class="d-inline-block mr-1" src="./images/Icon@2x.png" alt="Alpha Camp logo">
       <h1 class="shop-name d-inline-block">ALPHA Shop</h1>
     </a>
-
-
-
   </header>
 
+  <!-- main content -->
+  <main>
+    <form action="">
+      <!-- stepper -->
+      <div class="stepper-panel">
+        <h2 class="form-title">結帳</h2>
+        <div class="steps-wrapper d-flex justify-content-between">
+          <div class="step d-flex align-items-center checked">
+            <div class="step-circle rounded-circle d-flex justify-content-center align-items-center">1</div>
+            <span class="step-label d-none">寄送地址</span>
+          </div>
+          <div class="step d-flex align-items-center active">
+            <div class="step-circle rounded-circle d-flex justify-content-center align-items-center">2</div>
+            <span class="step-label d-none">運送方式</span>
+          </div>
+          <div class="step d-flex align-items-center">
+            <div class="step-circle rounded-circle d-flex justify-content-center align-items-center">3</div>
+            <span class="step-label d-none">付款資訊</span>
+          </div>
+          <span class="step-bar d-block"></span>
+          <span class="progress-line d-block"></span>
+        </div>
+      </div>
 
+      <!-- form-group -->
+      <div class="form-group">
+
+        <!-- form-part 1 -->
+        <div class="form-part">
+          <h2 class="form-title">寄送地址</h2>
+        </div>
+
+        <!-- form-part 2 -->
+        <div class="form-part">
+          <h2 class="form-title">運送方式</h2>
+        </div>
+
+        <!-- form-part 3 -->
+        <div class="form-part">
+          <h2 class="form-title">付款資訊</h2>
+        </div>
+
+
+      </div>
+
+      <!-- shopping-cart -->
+      <div class="shopping-cart">
+
+      </div>
+
+      <!-- buttons -->
+      <div class="btn-groups">
+
+      </div>
+    </form>
+  </main>
 
   <script src="main.js"></script>
 </body>

@@ -405,6 +405,19 @@ a:focus {
   align-items: center;
 }
 
+/* shorthand border-radius classes */
+.rounded-1 {
+  border-radius: 0.25rem;
+}
+
+.rounded-2 {
+  border-radius: 0.5rem;
+}
+
+.rounded-circle {
+  border-radius: 50%;
+}
+
 /* ------- project styles starts here ------- */
 body {
   font-family: "Noto Sans TC", sans-serif;
@@ -424,6 +437,7 @@ header .header-menu {
   width: 100%;
   max-width: 1056px;
   margin: 0 auto;
+  position: relative;
 }
 @media all and (min-width: 900px) {
   header .header-menu {
@@ -446,13 +460,14 @@ header .header-menu .navbar-toggle-label {
 }
 header .header-menu .header-actions {
   height: 70px;
-  z-index: 1;
+  z-index: 2;
+  background-color: var(--bg-color);
   font-size: 20px;
   box-shadow: 0 7px 7px 0 rgba(224, 228, 233, 0.1);
   opacity: 0;
-  transform: scale(1, 0);
+  transform: scale(1, 0) translateY(-600%);
   transform-origin: top;
-  transition: all 0.2s ease-in-out 0.01s;
+  transition: all 0.2s ease-in;
 }
 @media all and (min-width: 540px) {
   header .header-menu .header-actions {
@@ -500,16 +515,20 @@ nav {
   width: 100%;
   z-index: 1;
   font-weight: 500;
+  background-color: var(--bg-color);
+  box-shadow: 0 7px 7px 0 rgba(224, 228, 233, 0.1);
   opacity: 0;
   transform: scale(1, 0);
   transform-origin: top;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in;
 }
 @media all and (min-width: 900px) {
   nav {
     opacity: 1;
     transform: scale(1, 1);
     width: 50%;
+    background-color: transparent;
+    box-shadow: unset;
   }
 }
 @media all and (min-width: 900px) {
@@ -565,7 +584,71 @@ nav .nav-item::after {
 }
 #navbar-toggle:checked ~ label ~ nav ~ .header-actions {
   opacity: 1;
-  transform: scale(1, 1);
+  transform: scale(1, 1) translateY(0);
+}
+
+/* --- Main --- */
+form {
+  max-width: 1056px;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+form .form-title {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.steps-wrapper {
+  margin: 24px 0;
+  position: relative;
+}
+.steps-wrapper .step {
+  background-color: var(--bg-color);
+  padding: 0 32px;
+  color: #afb1bd;
+}
+.steps-wrapper .step .step-circle {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #afb1bd;
+}
+.steps-wrapper .step .step-label {
+  margin-left: 12.5px;
+}
+@media all and (min-width: 900px) {
+  .steps-wrapper .step .step-label {
+    display: unset;
+  }
+}
+.steps-wrapper .step.active {
+  color: var(--body-color);
+}
+.steps-wrapper .step.active .step-circle {
+  border-color: #333333;
+}
+.steps-wrapper .step.checked {
+  color: var(--body-color);
+}
+.steps-wrapper .step.checked .step-circle {
+  border-color: #333333;
+  background-color: #333333;
+  color: #ffffff;
+}
+.steps-wrapper .step-bar {
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  z-index: -5;
+  background-color: #afb1bd;
+}
+.steps-wrapper .progress-line {
+  height: 2px;
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: -1;
+  background-color: #333333;
 }
 
 /*# sourceMappingURL=style.css.map */

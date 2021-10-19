@@ -59,7 +59,7 @@ a:focus {
 
 /* ------- basic setting ------- */
 $standard-font-family: "Noto Sans TC", sans-serif;
-$brand-font-family: "Lato","Noto Sans TC", sans-serif;
+$brand-font-family: "Lato", "Noto Sans TC", sans-serif;
 $standard-font-size: 16px;
 $white: #ffffff;
 $rose-pink: #f67599;
@@ -215,6 +215,17 @@ $multiple: (1, 2, 3, 4);
   align-items: center;
 }
 
+/* shorthand border-radius classes */
+@each $num in (1, 2) {
+  .rounded-#{$num} {
+    border-radius: $num * 0.25 * $spacer;
+  }
+}
+
+.rounded-circle {
+  border-radius: 50%;
+}
+
 /* ------- project styles starts here ------- */
 body {
   font-family: $standard-font-family;
@@ -234,6 +245,7 @@ header {
     width: 100%;
     max-width: $max-width;
     margin: 0 auto;
+    position: relative;
     @include pc-media {
       flex-direction: row;
       justify-content: space-between;
@@ -251,13 +263,14 @@ header {
     }
     .header-actions {
       height: 70px;
-      z-index: 1;
+      z-index: 2;
+      background-color: var(--bg-color);
       font-size: 20px;
       box-shadow: 0 7px 7px 0 rgba(224, 228, 233, 0.1);
       opacity: 0;
-      transform: scale(1, 0);
+      transform: scale(1, 0) translateY(-600%);
       transform-origin: top;
-      transition: all 0.2s ease-in-out 0.01s;
+      transition: all 0.2s ease-in;
       @include pad-media {
         font-size: 1rem;
         opacity: 1;
@@ -268,7 +281,7 @@ header {
       }
       .header-link {
         height: 70px;
-        @include pad-media{
+        @include pad-media {
           height: 56px;
         }
         &:hover {
@@ -304,14 +317,18 @@ nav {
   width: 100%;
   z-index: 1;
   font-weight: 500;
+  background-color: var(--bg-color);
+  box-shadow: 0 7px 7px 0 rgba(224, 228, 233, 0.1);
   opacity: 0;
   transform: scale(1, 0);
   transform-origin: top;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in;
   @include pc-media {
     opacity: 1;
     transform: scale(1, 1);
     width: 50%;
+    background-color: transparent;
+    box-shadow: unset;
   }
 
   .nav-list {
@@ -364,8 +381,70 @@ nav {
       transform: scale(1, 1);
       ~ .header-actions {
         opacity: 1;
-        transform: scale(1, 1);
+        transform: scale(1, 1) translateY(0);
       }
     }
+  }
+}
+
+/* --- Main --- */
+form {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0.5rem;
+  .form-title {
+    font-size: 32px;
+    font-weight: 700;
+  }
+}
+
+.steps-wrapper {
+  margin: 24px 0;
+  position: relative;
+  .step {
+    background-color: var(--bg-color);
+    padding: 0 32px;
+    color: $neutrals-gray;
+    .step-circle {
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid $neutrals-gray;
+    }
+    .step-label {
+      margin-left: 12.5px;
+      @include pc-media {
+        display: unset;
+      }
+    }
+    &.active {
+      color: var(--body-color);
+      .step-circle {
+        border-color: $dark-gray;
+      }
+    }
+    &.checked {
+      color: var(--body-color);
+      .step-circle {
+        border-color: $dark-gray;
+        background-color: $dark-gray;
+        color: $white;
+      }
+    }
+  }
+  .step-bar {
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    z-index: -5;
+    background-color: $neutrals-gray;
+  }
+  .progress-line {
+    height: 2px;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+    background-color: $dark-gray;
   }
 }
