@@ -405,6 +405,18 @@ a:focus {
   align-items: center;
 }
 
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.flex-grow-2 {
+  flex-grow: 2;
+}
+
+.flex-grow-3 {
+  flex-grow: 3;
+}
+
 /* shorthand border-radius classes */
 .rounded-1 {
   border-radius: 0.25rem;
@@ -649,6 +661,14 @@ form .form-title {
   top: 50%;
   z-index: -1;
   background-color: #333333;
+}
+
+.form-row {
+  gap: 2rem;
+}
+
+.form-part input, .form-part select {
+  border-radius: 4px;
 }
 
 /*# sourceMappingURL=style.css.map */

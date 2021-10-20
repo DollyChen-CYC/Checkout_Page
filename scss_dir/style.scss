@@ -215,6 +215,12 @@ $multiple: (1, 2, 3, 4);
   align-items: center;
 }
 
+@each $num in (1, 2, 3) {
+  .flex-grow-#{$num} {
+    flex-grow: $num;
+  }
+}
+
 /* shorthand border-radius classes */
 @each $num in (1, 2) {
   .rounded-#{$num} {
@@ -447,4 +453,19 @@ form {
     z-index: -1;
     background-color: $dark-gray;
   }
+}
+
+
+
+// temporary style
+.form-row {
+  gap: 2rem;
+  
+}
+.form-unit{
+  // outline: 1px solid red;
+}
+
+.form-part input , .form-part select {
+  border-radius: 4px;
 }
