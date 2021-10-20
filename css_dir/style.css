@@ -663,7 +663,7 @@ nav .nav-item::after {
 form {
   max-width: 1056px;
   margin: 0 auto;
-  padding: 0.5rem;
+  padding: 14px;
 }
 form .form-title {
   font-size: 32px;
