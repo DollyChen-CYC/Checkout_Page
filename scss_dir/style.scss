@@ -127,7 +127,7 @@ $sizes: (
 
 // create shorthand spacing classes
 $spacer: 1rem;
-$multiple: (1, 2, 3, 4);
+$multiple: (1, 2, 3, 4, 5);
 
 /* shorthand spacing classes */
 @each $prop, $abbrev in (margin: m, padding: p) {
