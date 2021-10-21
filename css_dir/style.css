@@ -61,6 +61,7 @@ a:focus {
 :root {
   --bg-color: #ffffff;
   --body-color: #2a2a2a;
+  --form-description-color: #808080;
   --placeholder-color: #999999;
   --footer-bg: #f6f7f8;
   --footer-color: #808080;
@@ -70,6 +71,7 @@ a:focus {
 [dark-theme=dark] {
   --bg-color: #121212;
   --body-color: #ffffff;
+  --form-description-color: #f0f0f5;
   --placeholder-color: #afb1bd;
   --footer-bg: #333333;
   --footer-color: #f0f0f5;
@@ -439,6 +441,10 @@ header {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .justify-content-start {
   justify-content: flex-start;
 }
@@ -481,6 +487,10 @@ header {
 
 .flex-grow-3 {
   flex-grow: 3;
+}
+
+.flex-basis-100 {
+  flex-basis: 100%;
 }
 
 /* shorthand border-radius classes */
@@ -690,17 +700,6 @@ form select {
 form input::placeholder {
   color: var(--placeholder-color);
 }
-form input[type=radio] {
-  -webkit-appearance: none;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  border: 1px solid var(--placeholder-color);
-  cursor: pointer;
-}
-form input[type=radio]:checked {
-  box-shadow: inset 0 0 0 6px var(--body-color);
-}
 form .select-wrapper {
   position: relative;
   z-index: 0;
@@ -784,9 +783,17 @@ form select:valid {
 .form-group {
   margin-bottom: 24px;
 }
+.form-group .form-title {
+  font-size: 24px;
+}
 .form-group .form-row {
   margin-top: 24px;
   gap: 30px;
+  font-size: 12px;
+  color: var(--form-description-color);
+}
+.form-group .form-unit {
+  gap: 8px;
 }
 .form-group .shipping-option {
   position: relative;
@@ -796,7 +803,16 @@ form select:valid {
   gap: 20px;
   cursor: pointer;
 }
-.form-group .shipping-option :checked::after {
+.form-group .shipping-option .radio-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--placeholder-color);
+}
+.form-group .shipping-option .shipping-subtitle {
+  color: var(--body-color);
+}
+.form-group input[type=radio]:checked ~ .shipping-option::after {
   content: "";
   position: absolute;
   top: 0;
@@ -805,6 +821,9 @@ form select:valid {
   right: 0;
   border: 1px solid var(--placeholder-color);
   border-radius: 4px;
+}
+.form-group input[type=radio]:checked ~ .shipping-option .radio-circle {
+  box-shadow: inset 0 0 0 6px var(--body-color);
 }
 
 /*# sourceMappingURL=style.css.map */

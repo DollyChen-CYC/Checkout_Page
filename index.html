@@ -92,18 +92,18 @@
               <input type="text" name="name" id="name" placeholder="請輸入姓名">
             </div>
           </div>
-          <div class="form-row d-flex justify-content-between">
-            <div class="form-unit d-flex flex-column  flex-grow-1">
+          <div class="form-row d-flex flex-wrap justify-content-between">
+            <div class="form-unit d-flex flex-column flex-basis-100">
               <label for="phone">電話</label>
               <input type="text" name="phone" id="phone" placeholder="請輸入行動電話">
             </div>
-            <div class="form-unit d-flex flex-column  flex-grow-1">
+            <div class="form-unit d-flex flex-column flex-basis-100">
               <label for="email">Email</label>
               <input type="text" name="email" id="email" placeholder="請輸入電子郵件">
             </div>
           </div>
-          <div class="form-row d-flex justify-content-between">
-            <div class="form-unit d-flex flex-column  flex-grow-1">
+          <div class="form-row d-flex flex-wrap justify-content-between">
+            <div class="form-unit d-flex flex-column  flex-basis-100">
               <label for="city">縣市</label>
               <div class="select-wrapper">
                 <select name="city" id="city" required>
@@ -117,7 +117,7 @@
                 </select>
               </div>
             </div>
-            <div class="form-unit d-flex flex-column  flex-grow-2">
+            <div class="form-unit d-flex flex-column  flex-basis-100">
               <label for="address">地址</label>
               <input type="text" name="address" id="address" placeholder="請輸入地址">
             </div>
@@ -125,11 +125,14 @@
         </div>
 
         <!-- form-part 2 -->
-        <div class="form-part">
+        <div class="form-part d-none">
           <h2 class="form-title">運送方式</h2>
           <div class="form-row">
-            <label for="standard-shipping" class="shipping-option d-flex justify-content-between align-items-center rounded-1">
-              <input type="radio" name="shipping" id="standard-shipping" value="standard-shipping" required>
+            <input type="radio" name="shipping" id="standard-shipping" value="standard-shipping" class="d-none"
+              required>
+            <label for="standard-shipping"
+              class="shipping-option d-flex justify-content-between align-items-center rounded-1">
+              <div class="radio-circle"></div>
               <div class="shipping-desc d-flex flex-column flex-grow-1">
                 <span class="shipping-subtitle d-inline-block">標準運送</span>
                 <span class="d-inline-block">約 3-7 個工作天</span>
@@ -138,8 +141,10 @@
             </label>
           </div>
           <div class="form-row">
-            <label for="DHL-shipping" class="shipping-option d-flex justify-content-between align-items-center rounded-1">
-              <input type="radio" name="shipping" id="DHL-shipping" value="DHL-shipping" required>
+            <input type="radio" name="shipping" id="DHL-shipping" value="DHL-shipping" class="d-none" required>
+            <label for="DHL-shipping"
+              class="shipping-option d-flex justify-content-between align-items-center rounded-1">
+              <div class="radio-circle"></div>
               <div class="shipping-desc d-flex flex-column flex-grow-1">
                 <span class="shipping-subtitle d-inline-block">DHL 貨運</span>
                 <span class="d-inline-block">48 小時內送達</span>
@@ -150,30 +155,30 @@
         </div>
 
         <!-- form-part 3 -->
-        <div class="form-part">
+        <div class="form-part d-none">
           <h2 class="form-title">付款資訊</h2>
-            <div class="form-row"> 
-              <div class="form-unit d-flex flex-column w-75">
-                <label for="credit-card-holder">持卡人姓名</label>
-                <input type="text" name="credit-card-holder" id="credit-card-holder" placeholder="John Doe">
-              </div>
+          <div class="form-row">
+            <div class="form-unit d-flex flex-column w-75">
+              <label for="credit-card-holder">持卡人姓名</label>
+              <input type="text" name="credit-card-holder" id="credit-card-holder" placeholder="John Doe">
             </div>
-            <div class="form-row d-flex">
-              <div class="form-unit d-flex flex-column w-75">
-                <label for="credit-card-no">卡號</label>
-                <input type="text" name="credit-card-no" id="credit-card-no" placeholder="1111 2222 3333 4444">
-              </div>
+          </div>
+          <div class="form-row d-flex">
+            <div class="form-unit d-flex flex-column w-75">
+              <label for="credit-card-no">卡號</label>
+              <input type="text" name="credit-card-no" id="credit-card-no" placeholder="1111 2222 3333 4444">
             </div>
-            <div class="form-row d-flex justify-content-between">
-              <div class="form-unit d-flex flex-column flex-grow-1">
-                <label for="credit-card-expiration">有效期限</label>
-                <input type="text" name="credit-card-expiration" id="credit-card-expiration" placeholder="MM / YY">
-              </div>
-              <div class="form-unit d-flex flex-column flex-grow-1">
-                <label for="CVC-CCV">CVC / CCV</label>
-                <input type="text" name="CVC-CCV" id="CVC-CCV" placeholder="123">
-              </div>
+          </div>
+          <div class="form-row d-flex justify-content-between">
+            <div class="form-unit d-flex flex-column flex-grow-1">
+              <label for="credit-card-expiration">有效期限</label>
+              <input type="text" name="credit-card-expiration" id="credit-card-expiration" placeholder="MM / YY">
             </div>
+            <div class="form-unit d-flex flex-column flex-grow-1">
+              <label for="CVC-CCV">CVC / CCV</label>
+              <input type="text" name="CVC-CCV" id="CVC-CCV" placeholder="123">
+            </div>
+          </div>
         </div>
 
       </div>

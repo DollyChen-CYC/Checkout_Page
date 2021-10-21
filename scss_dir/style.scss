@@ -78,6 +78,7 @@ $max-width: 1056px;
 :root {
   --bg-color: #{$white};
   --body-color: #2a2a2a;
+  --form-description-color: #808080;
   --placeholder-color: #999999;
   --footer-bg: #f6f7f8;
   --footer-color: #808080;
@@ -87,6 +88,7 @@ $max-width: 1056px;
 [dark-theme="dark"] {
   --bg-color: #121212;
   --body-color: #{$white};
+  --form-description-color: #{$light-gray};
   --placeholder-color: #{$neutrals-gray};
   --footer-bg: #{$dark-gray};
   --footer-color: #{$light-gray};
@@ -185,6 +187,10 @@ $multiple: (1, 2, 3, 4, 5);
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .justify-content-start {
   justify-content: flex-start;
 }
@@ -223,6 +229,10 @@ $multiple: (1, 2, 3, 4, 5);
   }
 }
 
+.flex-basis-100 {
+  flex-basis: 100%;
+}
+
 /* shorthand border-radius classes */
 @each $num in (1, 2) {
   .rounded-#{$num} {
@@ -247,10 +257,10 @@ header {
   height: 56px;
   width: 100%;
   position: fixed;
-  z-index:10;
+  z-index: 10;
   background-color: var(--bg-color);
   @extend %standard-boxshadow;
-  
+
   .header-menu {
     height: 100%;
     width: 100%;
@@ -311,7 +321,7 @@ header {
     top: 0;
     bottom: 0;
     right: 50%;
-    z-index:10;
+    z-index: 10;
     transform: translateX(50%);
     img {
       width: 24px;
@@ -421,17 +431,6 @@ form {
     &::placeholder {
       color: var(--placeholder-color);
     }
-    &[type="radio"] {
-      -webkit-appearance: none;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      border: 1px solid var(--placeholder-color);
-      cursor: pointer;
-      &:checked {
-        box-shadow: inset 0 0 0 6px var(--body-color);
-      }
-    }
   }
   .select-wrapper {
     position: relative;
@@ -514,9 +513,17 @@ form {
 
 .form-group {
   margin-bottom: 24px;
+  .form-title {
+    font-size: 24px;
+  }
   .form-row {
     margin-top: 24px;
     gap: 30px;
+    font-size: 12px;
+    color: var(--form-description-color);
+  }
+  .form-unit {
+    gap: 8px;
   }
   .shipping-option {
     position: relative;
@@ -525,17 +532,29 @@ form {
     padding: 11px 20px;
     gap: 20px;
     cursor: pointer;
-    :checked {
-      &::after {
-        content: "";
-        position: absolute;
-        top:0;
-        bottom:0;
-        left:0;
-        right:0;
-        border: 1px solid var(--placeholder-color);
-        border-radius: 4px;
-      }
+    .radio-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid var(--placeholder-color);
+    }
+    .shipping-subtitle {
+      color: var(--body-color);
+    }
+  }
+  input[type="radio"]:checked ~ .shipping-option {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border: 1px solid var(--placeholder-color);
+      border-radius: 4px;
+    }
+    .radio-circle {
+      box-shadow: inset 0 0 0 6px var(--body-color);
     }
   }
 }
