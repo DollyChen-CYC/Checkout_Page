@@ -826,4 +826,44 @@ form select:valid {
   box-shadow: inset 0 0 0 6px var(--body-color);
 }
 
+.shopping-cart {
+  border: 1px solid #f0f0f5;
+}
+.shopping-cart .shopping-list {
+  gap: 16px;
+}
+.shopping-cart .shopping-list img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.shopping-cart .shopping-list .qty-wrapper {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+}
+.shopping-cart .shopping-list .qty-wrapper .qty-controller {
+  width: 26px;
+  height: 26px;
+  background-color: #f0f0f5;
+  text-align: center;
+  line-height: 26px;
+  font-size: 19px;
+  cursor: pointer;
+}
+.shopping-cart .shopping-list .qty-wrapper .qty-controller:hover {
+  background-color: #f9f9f9;
+}
+.shopping-cart .shopping-list .qty-wrapper .qty-controller:active {
+  background-color: #f0f0f5;
+}
+.shopping-cart .price-wrapper {
+  color: #000000;
+  font-weight: 700;
+}
+.shopping-cart .shipping-subtotal,
+.shopping-cart .shopping-price {
+  border-top: 1px solid #f0f0f5;
+}
+
 /*# sourceMappingURL=style.css.map */
