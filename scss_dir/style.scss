@@ -78,6 +78,7 @@ $max-width: 1056px;
 :root {
   --bg-color: #{$white};
   --body-color: #2a2a2a;
+  --placeholder-color: #999999;
   --footer-bg: #f6f7f8;
   --footer-color: #808080;
   --footer-color-title: #2a2a2a;
@@ -86,6 +87,7 @@ $max-width: 1056px;
 [dark-theme="dark"] {
   --bg-color: #121212;
   --body-color: #{$white};
+  --placeholder-color: #{$neutrals-gray};
   --footer-bg: #{$dark-gray};
   --footer-color: #{$light-gray};
   --footer-color-title: #{$white};
@@ -244,8 +246,11 @@ body {
 header {
   height: 56px;
   width: 100%;
-  position: relative;
-
+  position: fixed;
+  z-index:10;
+  background-color: var(--bg-color);
+  @extend %standard-boxshadow;
+  
   .header-menu {
     height: 100%;
     width: 100%;
@@ -269,15 +274,16 @@ header {
     }
     .header-actions {
       height: 70px;
-      z-index: 2;
+      z-index: 20;
       background-color: var(--bg-color);
       font-size: 20px;
-      box-shadow: 0 7px 7px 0 rgba(224, 228, 233, 0.1);
+      box-shadow: 0 8px 7px 1px rgba(224, 228, 233, 0.2);
       opacity: 0;
       transform: scale(1, 0) translateY(-600%);
       transform-origin: top;
       transition: all 0.2s ease-in;
       @include pad-media {
+        height: 56px;
         font-size: 1rem;
         opacity: 1;
         transform: scale(1, 1);
@@ -305,6 +311,7 @@ header {
     top: 0;
     bottom: 0;
     right: 50%;
+    z-index:10;
     transform: translateX(50%);
     img {
       width: 24px;
@@ -321,10 +328,10 @@ header {
 
 nav {
   width: 100%;
-  z-index: 1;
+  z-index: 10;
   font-weight: 500;
   background-color: var(--bg-color);
-  box-shadow: 0 7px 7px 0 rgba(224, 228, 233, 0.1);
+  box-shadow: 0 8px 7px 1px rgba(224, 228, 233, 0.2);
   opacity: 0;
   transform: scale(1, 0);
   transform-origin: top;
@@ -402,6 +409,56 @@ form {
     font-size: 32px;
     font-weight: 700;
   }
+  input,
+  select {
+    height: 40px;
+    padding: 12px 1rem;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid var(--placeholder-color);
+  }
+  input {
+    &::placeholder {
+      color: var(--placeholder-color);
+    }
+    &[type="radio"] {
+      -webkit-appearance: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--placeholder-color);
+      cursor: pointer;
+      &:checked {
+        box-shadow: inset 0 0 0 6px var(--body-color);
+      }
+    }
+  }
+  .select-wrapper {
+    position: relative;
+    z-index: 0;
+    &::after {
+      content: "";
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      z-index: -1;
+      /* create drop-down triangle */
+      border-style: solid;
+      border-width: 5px 5px 0 5px;
+      border-color: var(--body-color) transparent transparent transparent;
+    }
+  }
+  select {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: var(--placeholder-color);
+    cursor: pointer;
+    &:valid {
+      color: var(--body-color);
+    }
+  }
 }
 
 .steps-wrapper {
@@ -455,21 +512,39 @@ form {
   }
 }
 
-
+.form-group {
+  margin-bottom: 24px;
+  .form-row {
+    margin-top: 24px;
+    gap: 30px;
+  }
+  .shipping-option {
+    position: relative;
+    border: 1px solid $light-gray;
+    border-radius: 4px;
+    padding: 11px 20px;
+    gap: 20px;
+    cursor: pointer;
+    :checked {
+      &::after {
+        content: "";
+        position: absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        border: 1px solid var(--placeholder-color);
+        border-radius: 4px;
+      }
+    }
+  }
+}
 
 // temporary style
-.form-row {
-  gap: 2rem;
-  
-}
-.form-unit{
-  // outline: 1px solid red;
-}
-
-.form-part input , .form-part select {
-  border-radius: 4px;
-}
-
-.footer-container {
-  max-width: $max-width;
-}
+// .shopping-cart {
+//   margin: 12px 0;
+// }
+// .footer-container {
+//   max-width: $max-width;
+//   margin: 0 auto;
+// }

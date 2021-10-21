@@ -79,11 +79,13 @@
           <div class="form-row d-flex justify-content-between">
             <div class="form-unit d-flex flex-column  flex-grow-1">
               <label for="salutation">稱謂</label>
-              <select name="salutation" id="salutation">
-                <option value="Mr">先生</option>
-                <option value="Ms">小姐</option>
-                <option value="Mx">Mx</option>
-              </select>
+              <div class="select-wrapper">
+                <select name="salutation" id="salutation">
+                  <option value="Mr">先生</option>
+                  <option value="Ms">小姐</option>
+                  <option value="Mx">Mx</option>
+                </select>
+              </div>
             </div>
             <div class="form-unit d-flex flex-column  flex-grow-2">
               <label for="name">姓名</label>
@@ -103,15 +105,17 @@
           <div class="form-row d-flex justify-content-between">
             <div class="form-unit d-flex flex-column  flex-grow-1">
               <label for="city">縣市</label>
-              <select name="city" id="city">
-                <option value="" selected disabled>請選擇縣市</option>
-                <option value="taipei">台北市</option>
-                <option value="new-taipei">新北市</option>
-                <option value="taichung">台中市</option>
-                <option value="tainan">台南市</option>
-                <option value="kaohsiung">高雄市</option>
-                <option value="more">更多...</option>
-              </select>
+              <div class="select-wrapper">
+                <select name="city" id="city" required>
+                  <option value="" selected disabled>請選擇縣市</option>
+                  <option value="taipei">台北市</option>
+                  <option value="new-taipei">新北市</option>
+                  <option value="taichung">台中市</option>
+                  <option value="tainan">台南市</option>
+                  <option value="kaohsiung">高雄市</option>
+                  <option value="more">更多...</option>
+                </select>
+              </div>
             </div>
             <div class="form-unit d-flex flex-column  flex-grow-2">
               <label for="address">地址</label>
@@ -124,8 +128,8 @@
         <div class="form-part">
           <h2 class="form-title">運送方式</h2>
           <div class="form-row">
-            <label for="standard-shipping" class="checkbox-group d-flex justify-content-between align-items-center rounded-1">
-              <input type="radio" name="shipping" id="standard-shipping" value="standard-shipping">
+            <label for="standard-shipping" class="shipping-option d-flex justify-content-between align-items-center rounded-1">
+              <input type="radio" name="shipping" id="standard-shipping" value="standard-shipping" required>
               <div class="shipping-desc d-flex flex-column flex-grow-1">
                 <span class="shipping-subtitle d-inline-block">標準運送</span>
                 <span class="d-inline-block">約 3-7 個工作天</span>
@@ -134,8 +138,8 @@
             </label>
           </div>
           <div class="form-row">
-            <label for="DHL-shipping" class="checkbox-group d-flex justify-content-between align-items-center rounded-1">
-              <input type="radio" name="shipping" id="DHL-shipping" value="DHL-shipping">
+            <label for="DHL-shipping" class="shipping-option d-flex justify-content-between align-items-center rounded-1">
+              <input type="radio" name="shipping" id="DHL-shipping" value="DHL-shipping" required>
               <div class="shipping-desc d-flex flex-column flex-grow-1">
                 <span class="shipping-subtitle d-inline-block">DHL 貨運</span>
                 <span class="d-inline-block">48 小時內送達</span>
