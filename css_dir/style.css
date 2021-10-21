@@ -78,7 +78,7 @@ a:focus {
   --footer-color-title: #ffffff;
 }
 
-header {
+.btn-groups .btn:hover, header {
   box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
 }
 
@@ -597,6 +597,7 @@ header .brand img {
   height: 24px;
 }
 header .brand .shop-name {
+  color: var(--body-color);
   font-family: "Lato", "Noto Sans TC", sans-serif;
   font-weight: 900;
   font-size: 18px;
@@ -864,6 +865,74 @@ form select:valid {
 .shopping-cart .shipping-subtotal,
 .shopping-cart .shopping-price {
   border-top: 1px solid #f0f0f5;
+}
+
+.btn-groups {
+  margin: 1rem 0;
+  padding: 24px 0;
+  font-size: 16px;
+  gap: 30px;
+  border-top: 1px solid #f0f0f5;
+  /* special settings for btn-previous */
+}
+.btn-groups .btn {
+  height: 40px;
+  background-color: #f67599;
+  color: #ffffff;
+}
+.btn-groups .btn .arrow {
+  font-size: 20px;
+}
+.btn-groups .btn:hover {
+  opacity: 0.9;
+  font-weight: 600;
+}
+.btn-groups .btn:active {
+  opacity: 1;
+}
+.btn-groups .btn-previous .btn {
+  background-color: var(--bg-color);
+  color: var(--body-color);
+}
+.btn-groups .btn-previous .btn:hover {
+  box-shadow: unset;
+}
+.btn-groups .btn-previous .btn:active {
+  color: #f67599;
+}
+
+/* --- Footer --- */
+footer {
+  background-color: var(--footer-bg);
+  padding: 64px 0 80px;
+  color: var(--footer-color);
+}
+footer .footer-container {
+  max-width: 1056px;
+  margin: 0 auto;
+}
+footer .footer-brand .brand img {
+  width: 24px;
+  height: 24px;
+}
+footer .footer-brand .brand .shop-name {
+  font-family: "Lato", "Noto Sans TC", sans-serif;
+  color: var(--footer-color-title);
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.75px;
+}
+footer .footer-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--footer-color-title);
+}
+footer .footer-list {
+  margin-top: 24px;
+  line-height: 150%;
+}
+footer .footer-link:hover {
+  color: var(--footer-color-title);
 }
 
 /*# sourceMappingURL=style.css.map */
