@@ -31,12 +31,17 @@
         </ul>
       </nav>
       <div class="header-actions d-flex justify-content-center">
-        <a href="#" class="header-link header-link-search px-3 d-flex align-items-center"><i
-            class="fas fa-search"></i></a>
-        <a href="#" class="header-link header-link-shopping-cart px-3 d-flex align-items-center"><i
-            class="fas fa-shopping-cart"></i></a>
-        <a href="#" class="header-link header-link-dark px-3 d-flex align-items-center"><i class="fas fa-moon"></i></a>
-        <a href="#" class="header-link header-link-light px-3 align-items-center d-none"><i class="far fa-sun"></i></a>
+        <a href="#" class="header-link header-link-search px-3 d-flex align-items-center">
+          <i class="fas fa-search"></i>
+        </a>
+        <a href="#" class="header-link header-link-shopping-cart px-3 d-flex align-items-center">
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+        <label for="dark-mode-toggle" class="header-link header-link-dark px-3 d-flex align-items-center">
+          <i class="fas fa-moon"></i>
+          <i class="fas fa-sun d-none"></i>
+        </label>
+        <input type="checkbox" name="dark-mode-toggle" id="dark-mode-toggle" class="d-none">
         <!-- use JS to control the toggle of d-flex / d-none -->
       </div>
     </div>
@@ -198,7 +203,7 @@
           <span>小計</span>
           <div class="price-wrapper">
             <span>$</span>
-            <span class="total-amount">5298</span>
+            <span class="total-amount">0</span>
           </div>
         </div>
       </div>

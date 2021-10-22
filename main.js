@@ -18,6 +18,8 @@ const userShoppingList = [
 let indexActiveForm = 0
 
 // --------- Nodes ---------- //
+const headerActions = document.querySelector('.header-actions')
+const darkModeToggle = headerActions.querySelector('#dark-mode-toggle')
 const stepper = document.querySelector('.steps-wrapper')
 const stepList = stepper.querySelectorAll('.step')
 const progressLine = stepper.querySelector('.progress-line')
@@ -70,6 +72,19 @@ function handleQtyAdjustment(event) {
     updateSubtotal(shoppingItem)
     updateShoppingAmount() 
   }
+}
+
+function toggleDarkMode() {
+  const darkIcon = headerActions.querySelector('.fa-moon')
+  const lightIcon = headerActions.querySelector('.fa-sun')
+  
+  if (event.target.checked) {
+    document.documentElement.setAttribute('dark-theme', 'dark')
+  } else {
+    document.documentElement.setAttribute('dark-theme', 'light')
+  } 
+  darkIcon.classList.toggle('d-none')
+  lightIcon.classList.toggle('d-none')
 }
 
 // Functions related to Views
@@ -171,4 +186,5 @@ btnGroup.addEventListener('click', handleBtnsClick)
 // Event listener for detecting qty change of shopping items
 shoppingList.addEventListener('click', handleQtyAdjustment)
 
-
+// Event listener for dark mode shifting
+darkModeToggle.addEventListener('change', toggleDarkMode)

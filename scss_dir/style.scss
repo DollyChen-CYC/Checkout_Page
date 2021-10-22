@@ -81,6 +81,7 @@ $max-width: 1056px;
   --form-description-color: #808080;
   --placeholder-color: #999999;
   --shopping-cart-bg: #{$white};
+  --border-light-color: #{$light-gray};
   --footer-bg: #f6f7f8;
   --footer-color: #808080;
   --footer-color-title: #2a2a2a;
@@ -92,6 +93,7 @@ $max-width: 1056px;
   --form-description-color: #{$light-gray};
   --placeholder-color: #{$neutrals-gray};
   --shopping-cart-bg: #{$dark-gray};
+  --border-light-color: #444444;
   --footer-bg: #{$dark-gray};
   --footer-color: #{$light-gray};
   --footer-color-title: #{$white};
@@ -434,6 +436,7 @@ form {
     font-size: 12px;
     border-radius: 4px;
     border: 1px solid var(--placeholder-color);
+    background-color: var(--bg-color);
   }
   input {
     &::placeholder {
@@ -503,7 +506,7 @@ form {
     &.active {
       color: var(--body-color);
       .step-circle {
-        border-color: $dark-gray;
+        border-color: var(--body-color);
       }
     }
     &.checked {
@@ -517,7 +520,7 @@ form {
         right: 0;
         left: 0;
         border-radius: 50%;
-        border: 1px solid $dark-gray;
+        border: 1px solid var(--body-color);
         background-color: $dark-gray;
         color: $white;
         text-align: center;
@@ -573,7 +576,7 @@ form {
   }
   .shipping-option {
     position: relative;
-    border: 1px solid $light-gray;
+    border: 1px solid var(--border-light-color);
     border-radius: 4px;
     padding: 11px 20px;
     gap: 20px;
@@ -610,7 +613,7 @@ form {
 
 /* --- Shopping cart --- */
 .shopping-cart {
-  border: 1px solid $light-gray;
+  border: 1px solid var(--border-light-color);
   background-color: var(--shopping-cart-bg);
   .shopping-list {
     gap: 16px;
@@ -622,8 +625,8 @@ form {
     .qty-wrapper {
       font-size: 14px;
       font-weight: 500;
-      color: #000000;
       .qty-controller {
+        color: $dark-gray;
         width: 26px;
         height: 26px;
         background-color: $light-gray;
@@ -641,7 +644,6 @@ form {
     }
   }
   .price-wrapper {
-    color: #000000;
     font-weight: 700;
   }
   .shipping-subtotal,
@@ -662,7 +664,7 @@ form {
   padding: 24px 0;
   font-size: 16px;
   gap: 30px;
-  border-top: 1px solid $light-gray;
+  border-top: 1px solid var(--border-light-color);
   .btn {
     height: 40px;
     background-color: $rose-pink;
