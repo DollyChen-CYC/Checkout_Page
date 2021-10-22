@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ------- reset CSS ------- */
 *,
 *::before,
@@ -747,9 +748,12 @@ form select:valid {
 }
 .steps-wrapper .step {
   background-color: var(--bg-color);
+  position: relative;
+  z-index: 5;
   color: #afb1bd;
 }
 .steps-wrapper .step .step-circle {
+  position: relative;
   margin: 0 32px;
   width: 2rem;
   height: 2rem;
@@ -781,25 +785,35 @@ form select:valid {
 .steps-wrapper .step.checked {
   color: var(--body-color);
 }
-.steps-wrapper .step.checked .step-circle {
-  border-color: #333333;
+.steps-wrapper .step.checked .step-circle::after {
+  content: "✓";
+  position: absolute;
+  z-index: 6;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 50%;
+  border: 1px solid #333333;
   background-color: #333333;
   color: #ffffff;
+  text-align: center;
+  font-size: 18px;
 }
 .steps-wrapper .step-bar {
   height: 2px;
   width: 100%;
   position: absolute;
   top: 50%;
-  z-index: -5;
+  z-index: 1;
   background-color: #afb1bd;
 }
 .steps-wrapper .progress-line {
   height: 2px;
-  width: 50%;
+  width: 0%;
   position: absolute;
   top: 50%;
-  z-index: -1;
+  z-index: 2;
   background-color: #333333;
 }
 @media all and (min-width: 900px) {
@@ -944,14 +958,14 @@ form select:valid {
 .btn-groups .btn:active {
   opacity: 1;
 }
-.btn-groups .btn-previous .btn {
+.btn-groups .btn-previous.btn {
   background-color: var(--bg-color);
   color: var(--body-color);
 }
-.btn-groups .btn-previous .btn:hover {
+.btn-groups .btn-previous.btn:hover {
   box-shadow: unset;
 }
-.btn-groups .btn-previous .btn:active {
+.btn-groups .btn-previous.btn:active {
   color: #f67599;
 }
 @media all and (min-width: 900px) {

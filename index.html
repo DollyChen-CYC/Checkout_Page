@@ -53,11 +53,11 @@
       <div class="stepper-panel">
         <h2 class="form-title">結帳</h2>
         <div class="steps-wrapper d-flex justify-content-between">
-          <div class="step d-flex align-items-center checked">
+          <div class="step d-flex align-items-center active">
             <div class="step-circle rounded-circle d-flex justify-content-center align-items-center">1</div>
             <span class="step-label d-none">寄送地址</span>
           </div>
-          <div class="step d-flex align-items-center active">
+          <div class="step d-flex align-items-center">
             <div class="step-circle rounded-circle d-flex justify-content-center align-items-center">2</div>
             <span class="step-label d-none">運送方式</span>
           </div>
@@ -191,9 +191,9 @@
             <div class="item-info flex-grow-1 d-flex flex-column justify-content-between align-items-end">
               <p class="product-name">破壞補丁修身牛仔褲</p>
               <div class="qty-wrapper">
-                <span class="qty-controller rereduce-circle d-inline-block rounded-circle">-</span>
+                <span class="qty-controller qty-minus-circle d-inline-block rounded-circle">-</span>
                 <span class="qty mx-3">1</span>
-                <span class="qty-controller add-circle d-inline-block rounded-circle">+</span>
+                <span class="qty-controller qty-add-circle d-inline-block rounded-circle">+</span>
               </div>
               <div class="price-wrapper">
                 <span>$</span>
@@ -206,9 +206,9 @@
             <div class="item-info flex-grow-1 d-flex flex-column justify-content-between align-items-end">
               <p class="product-name">刷色直筒牛仔褲</p>
               <div class="qty-wrapper">
-                <span class="qty-controller rereduce-circle d-inline-block rounded-circle">-</span>
+                <span class="qty-controller qty-minus-circle d-inline-block rounded-circle">-</span>
                 <span class="qty mx-3">1</span>
-                <span class="qty-controller add-circle d-inline-block rounded-circle">+</span>
+                <span class="qty-controller qty-add-circle d-inline-block rounded-circle">+</span>
               </div>
               <div class="price-wrapper">
                 <span>$</span>
@@ -232,8 +232,8 @@
 
       <!-- buttons -->
       <div class="btn-groups d-flex justify-content-between">
-        <div class="btn-wrapper btn-previous flex-grow-1">
-          <button class="btn"><span class="arrow">&#8592;</span> 上一步</button>
+        <div class="btn-wrapper flex-grow-1 w-0">
+          <button class="btn btn-previous d-none"><span class="arrow">&#8592;</span> 上一步</button>
         </div>
         <button class="btn btn-next rounded-2 flex-grow-1">下一步 <span class="arrow">&#8594;</span></button>
         <button type="submit" class="btn btn-submit rounded-2 flex-grow-1 d-none">確認下單</button>
@@ -288,7 +288,7 @@
       </div>
     </div>
   </footer>
-  
+
   <script src="main.js"></script>
 </body>
 

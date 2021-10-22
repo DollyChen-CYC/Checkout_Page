@@ -477,8 +477,11 @@ form {
   position: relative;
   .step {
     background-color: var(--bg-color);
+    position: relative;
+    z-index: 5;
     color: $neutrals-gray;
     .step-circle {
+      position: relative;
       margin: 0 32px;
       width: 2rem;
       height: 2rem;
@@ -505,10 +508,20 @@ form {
     }
     &.checked {
       color: var(--body-color);
-      .step-circle {
-        border-color: $dark-gray;
+      .step-circle::after {
+        content: "\2713";
+        position: absolute;
+        z-index: 6;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        border-radius: 50%;
+        border: 1px solid $dark-gray;
         background-color: $dark-gray;
         color: $white;
+        text-align: center;
+        font-size: 18px;
       }
     }
   }
@@ -517,15 +530,15 @@ form {
     width: 100%;
     position: absolute;
     top: 50%;
-    z-index: -5;
+    z-index: 1;
     background-color: $neutrals-gray;
   }
   .progress-line {
     height: 2px;
-    width: 50%;
+    width: 0%;
     position: absolute;
     top: 50%;
-    z-index: -1;
+    z-index: 2;
     background-color: $dark-gray;
   }
   @include pc-media {
@@ -668,7 +681,7 @@ form {
   }
   /* special settings for btn-previous */
   .btn-previous {
-    .btn {
+    &.btn {
       background-color: var(--bg-color);
       color: var(--body-color);
       &:hover {
