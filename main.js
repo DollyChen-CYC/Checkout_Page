@@ -1,4 +1,20 @@
 // ------ Variables -------- //
+const userShoppingList = [
+  {
+    id: 1,
+    productName: '破壞補丁修身牛仔褲',
+    productImg: './images/product-1@3x.png',
+    unitPrice: 3999,
+    purchaseQty: 1,
+  },
+  {
+    id: 2,
+    productName: '刷色直筒牛仔褲',
+    productImg: './images/product-2@3x.png',
+    unitPrice: 1299,
+    purchaseQty: 1,
+  }
+]
 let indexActiveForm = 0
 
 // --------- Nodes ---------- //
@@ -11,9 +27,12 @@ const btnGroup = document.querySelector('.btn-groups')
 const btnPrevious = btnGroup.querySelector('.btn-previous')
 const btnNext = btnGroup.querySelector('.btn-next')
 const btnSubmit = btnGroup.querySelector('.btn-submit')
-const shoppingList = document.querySelector('.shopping-list')
+const shoppingCart = document.querySelector('.shopping-cart')
+const shoppingList = shoppingCart.querySelector('.shopping-list')
 
 // ------- Functions -------- //
+
+// Functions related to Event handle
 function handleBtnsClick(event) {
   event.preventDefault()
   const targetItem = event.target
@@ -42,6 +61,39 @@ function handleBtnsClick(event) {
     window.location.reload()
   }
 }
+
+function handleQtyAdjustment(event) {
+  const targetItem = event.target
+  if (targetItem.matches('.qty-controller')) {
+    const shoppingItem = targetItem.closest('.shopping-item')
+    updateProductQty(targetItem, shoppingItem)
+    updateSubtotal(shoppingItem)
+    updateShoppingAmount() 
+  }
+}
+
+// Functions related to Views
+const renderShoppingCart = function() {
+  userShoppingList.forEach(item => 
+    shoppingList.innerHTML += `
+      <div class="shopping-item d-flex justify-content-between" data-id=${item.id}>
+        <img src="${item.productImg}" alt="product-img" class="product-img">
+        <div class="item-info flex-grow-1 d-flex flex-column justify-content-between align-items-end">
+          <p class="product-name">${item.productName}</p>
+          <div class="qty-wrapper">
+            <span class="qty-controller qty-minus-circle d-inline-block rounded-circle">-</span>
+            <span class="qty mx-3">${item.purchaseQty}</span>
+            <span class="qty-controller qty-add-circle d-inline-block rounded-circle">+</span>
+          </div>
+          <div class="price-wrapper">
+            <span>$</span>
+            <span class="subtotal">${item.unitPrice}</span>
+          </div>
+        </div>
+      </div>
+    `
+    )
+}()
 
 function updateFormPart(nextForm) {
   const currentForm = formList[indexActiveForm]
@@ -82,11 +134,41 @@ function updateProgressLine(currentIndex, totalStage) {
   const lineWidth = currentIndex / (totalStage - 1) * 100
   progressLine.style.width = `${lineWidth}%`
 }
+
+function updateProductQty(targetItem, shoppingItem) {
+  const qtyNode = shoppingItem.querySelector('.qty')
+  const currentQty = qtyNode.innerHTML
+  if (targetItem.matches('.qty-minus-circle') && currentQty > 0) {
+    qtyNode.innerHTML--
+  } else if (targetItem.matches('.qty-add-circle')) {
+    qtyNode.innerHTML++
+  }
+}
+
+function updateSubtotal(shoppingItem) {
+  const productId = shoppingItem.dataset.id
+  // get unit price from DB
+  const targetProduct = userShoppingList.find(product => product.id.toString() === productId)
+  const unitPrice = targetProduct.unitPrice
+  const subtotal = shoppingItem.querySelector('.subtotal')
+  const qtyNode = shoppingItem.querySelector('.qty')
+  subtotal.innerHTML = qtyNode.innerHTML * unitPrice
+}
+
+function updateShoppingAmount() {
+  const totalAmount = shoppingCart.querySelector('.total-amount')
+  const allSubtotal = shoppingCart.querySelectorAll('.subtotal')
+  let sum = 0
+  allSubtotal.forEach(subtotal => sum += Number(subtotal.innerHTML))
+  totalAmount.innerHTML = sum
+}
+
 // ------- Functions execution or invoked ------- //
 
 // Event listener for form page controls
 btnGroup.addEventListener('click', handleBtnsClick)
 
-// shoppingList.addEventListener('click', handleQtyController)
+// Event listener for detecting qty change of shopping items
+shoppingList.addEventListener('click', handleQtyAdjustment)
 
 
