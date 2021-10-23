@@ -25,6 +25,7 @@ const stepList = stepper.querySelectorAll('.step')
 const progressLine = stepper.querySelector('.progress-line')
 const formGroup = document.querySelector('.form-group')
 const formList = formGroup.querySelectorAll('.form-part')
+const formOfShipping = formGroup.querySelector('.form-part-shipping')
 const btnGroup = document.querySelector('.btn-groups')
 const btnPrevious = btnGroup.querySelector('.btn-previous')
 const btnNext = btnGroup.querySelector('.btn-next')
@@ -108,6 +109,7 @@ const renderShoppingCart = function() {
       </div>
     `
     )
+  updateShoppingAmount()
 }()
 
 function updateFormPart(nextForm) {
@@ -174,14 +176,28 @@ function updateShoppingAmount() {
   const totalAmount = shoppingCart.querySelector('.total-amount')
   const allSubtotal = shoppingCart.querySelectorAll('.subtotal')
   let sum = 0
-  allSubtotal.forEach(subtotal => sum += Number(subtotal.innerHTML))
+  allSubtotal.forEach(subtotal => {
+    if (!isNaN(Number(subtotal.innerHTML))) { 
+    sum += Number(subtotal.innerHTML)
+    }
+  })
   totalAmount.innerHTML = sum
 }
 
+function updateShippingFee() {
+  const shippingSubtotal = shoppingCart.querySelector('.shipping-subtotal')
+  const shippingFee =  shippingSubtotal.querySelector('.subtotal')
+  const selectedShipping = event.target.parentElement.querySelector('.subtotal') 
+  shippingFee.innerHTML = selectedShipping.innerHTML
+  updateShoppingAmount()
+}
 // ------- Functions execution or invoked ------- //
 
 // Event listener for form page controls
 btnGroup.addEventListener('click', handleBtnsClick)
+
+// Event listener for shipping fee selection
+formOfShipping.addEventListener('change', updateShippingFee)
 
 // Event listener for detecting qty change of shopping items
 shoppingList.addEventListener('click', handleQtyAdjustment)

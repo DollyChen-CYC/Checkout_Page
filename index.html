@@ -130,11 +130,11 @@
         </div>
 
         <!-- form-part 2 -->
-        <div class="form-part d-none">
+        <div class="form-part d-none form-part-shipping">
           <h2 class="form-title">運送方式</h2>
           <div class="form-row">
             <input type="radio" name="shipping" id="standard-shipping" value="standard-shipping" class="d-none"
-              required>
+              checked required>
             <label for="standard-shipping"
               class="shipping-option d-flex justify-content-between align-items-center rounded-1">
               <div class="radio-circle"></div>
@@ -142,7 +142,10 @@
                 <span class="shipping-subtitle d-inline-block">標準運送</span>
                 <span class="d-inline-block">約 3-7 個工作天</span>
               </div>
-              <div class="shipping-fee">免費</div>
+              <div class="shipping-fee price-wrapper">
+                  <span>$</span>
+                  <span class="subtotal">免費</span>
+              </div>
             </label>
           </div>
           <div class="form-row">
@@ -154,7 +157,10 @@
                 <span class="shipping-subtitle d-inline-block">DHL 貨運</span>
                 <span class="d-inline-block">48 小時內送達</span>
               </div>
-              <div class="shipping-fee">$500</div>
+              <div class="shipping-fee price-wrapper">
+                <span>$</span>
+                <span class="subtotal">500</span>
+              </div>
             </label>
           </div>
         </div>
@@ -193,11 +199,13 @@
         <div class="shopping-list py-2 d-flex flex-column">
           <!-- user's shopping list will be shown here -->
           
-          
         </div>
         <div class="shipping-subtotal d-flex justify-content-between py-2">
           <span>運費</span>
-          <span class="price-wrapper">免費</span>
+          <span class="price-wrapper">
+            <span>$</span>
+            <span class="subtotal">免費</span>
+          </span>
         </div>
         <div class="shopping-price d-flex justify-content-between py-2">
           <span>小計</span>
