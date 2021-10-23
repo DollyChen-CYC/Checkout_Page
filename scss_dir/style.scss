@@ -417,6 +417,7 @@ nav {
 
 /* --- Main Starts here --- */
 main {
+  min-height: 70vh;
   background-color: var(--bg-color);
   padding-top: 70px;
 }
@@ -437,6 +438,7 @@ form {
     border-radius: 4px;
     border: 1px solid var(--placeholder-color);
     background-color: var(--bg-color);
+    color: var(--body-color);
   }
   input {
     &::placeholder {
@@ -485,7 +487,7 @@ form {
     color: $neutrals-gray;
     .step-circle {
       position: relative;
-      margin: 0 32px;
+      margin: 0 22px;
       width: 2rem;
       height: 2rem;
       border: 1px solid $neutrals-gray;
@@ -493,9 +495,6 @@ form {
       @include pc-media {
         margin: 0 0 0 16px;
       }
-    }
-    &:first-child .step-circle {
-      margin-left: 0;
     }
     .step-label {
       margin: 0 16px 0 12.5px;
@@ -534,7 +533,7 @@ form {
     position: absolute;
     top: 50%;
     z-index: 1;
-    background-color: $neutrals-gray;
+    background-color: var(--border-light-color);
   }
   .progress-line {
     height: 2px;
@@ -542,7 +541,7 @@ form {
     position: absolute;
     top: 50%;
     z-index: 2;
-    background-color: $dark-gray;
+    background-color: var(--body-color);
   }
   @include pc-media {
     max-width: 50%;
@@ -608,6 +607,7 @@ form {
   }
   @include pc-media {
     max-width: 50%;
+    min-height: 35vh;
   }
 }
 
@@ -652,7 +652,7 @@ form {
   }
   @include pc-media {
     position: absolute;
-    right: 0;
+    right: 16px;
     left: calc($max-width / 12 * 7);
     top: 90px;
   }
