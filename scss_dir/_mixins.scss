@@ -1,0 +1,12 @@
+// Mixins for RWD media queries
+@mixin pad-media {
+  @media all and (min-width: $pad-width) {
+    @content;
+  }
+}
+
+@mixin pc-media {
+  @media all and (min-width: $pc-width) {
+    @content;
+  }
+}

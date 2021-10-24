@@ -1,0 +1,71 @@
+/* --- Steps-wrapper --- */
+.steps-wrapper {
+  margin: 24px 0;
+  position: relative;
+  .step {
+    background-color: var(--bg-color);
+    position: relative;
+    z-index: 5;
+    color: $neutrals-gray;
+    .step-circle {
+      position: relative;
+      margin: 0 22px;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid $neutrals-gray;
+      flex-shrink: 0;
+      @include pc-media {
+        margin: 0 0 0 16px;
+      }
+    }
+    .step-label {
+      margin: 0 16px 0 12.5px;
+      @include pc-media {
+        display: unset;
+      }
+    }
+    &.active {
+      color: var(--body-color);
+      .step-circle {
+        border-color: var(--body-color);
+      }
+    }
+    &.checked {
+      color: var(--body-color);
+      .step-circle::after {
+        content: "\2713";
+        position: absolute;
+        z-index: 6;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        border-radius: 50%;
+        border: 1px solid var(--body-color);
+        background-color: $dark-gray;
+        color: $white;
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+  }
+  .step-bar {
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    background-color: var(--border-light-color);
+  }
+  .progress-line {
+    height: 2px;
+    width: 0%;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    background-color: var(--body-color);
+  }
+  @include pc-media {
+    max-width: 50%;
+  }
+}

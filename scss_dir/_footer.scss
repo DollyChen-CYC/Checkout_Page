@@ -1,0 +1,43 @@
+/* --- Footer --- */
+footer {
+  display: none;
+  background-color: var(--footer-bg);
+  padding: 64px 0 80px;
+  color: var(--footer-color);
+  .footer-container {
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+  .footer-brand {
+    .brand {
+      img {
+        width: 24px;
+        height: 24px;
+      }
+      .shop-name {
+        font-family: $brand-font-family;
+        color: var(--footer-color-title);
+        font-weight: 900;
+        font-size: 18px;
+        letter-spacing: 0.75px;
+      }
+    }
+  }
+  .footer-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--footer-color-title);
+  }
+  .footer-list {
+    margin-top: 24px;
+    line-height: 150%;
+  }
+  .footer-link {
+    &:hover {
+      color: var(--footer-color-title);
+    }
+  }
+  @include pc-media {
+    display: block;
+  }
+}

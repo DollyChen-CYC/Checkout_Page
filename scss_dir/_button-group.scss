@@ -1,0 +1,40 @@
+/* --- Buttons --- */
+.btn-groups {
+  margin: 1rem 0;
+  padding: 24px 0;
+  font-size: 16px;
+  gap: 30px;
+  border-top: 1px solid var(--border-light-color);
+  .btn {
+    height: 40px;
+    background-color: $rose-pink;
+    color: $white;
+    .arrow {
+      font-size: 20px;
+    }
+    &:hover {
+      opacity: 0.9;
+      font-weight: 600;
+      @extend %standard-boxshadow;
+    }
+    &:active {
+      opacity: 1;
+    }
+  }
+  /* special settings for btn-previous */
+  .btn-previous {
+    &.btn {
+      background-color: var(--bg-color);
+      color: var(--body-color);
+      &:hover {
+        box-shadow: unset;
+      }
+      &:active {
+        color: $rose-pink;
+      }
+    }
+  }
+  @include pc-media {
+    max-width: 50%;
+  }
+}

@@ -1,0 +1,131 @@
+// create shorthand sizing classes
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+);
+
+/* shorthand sizing classes */
+@each $prop, $abbrev in (width: w, height: h) {
+  @each $num, $percentage in $sizes {
+    .#{$abbrev}-#{$num} {
+      #{$prop}: #{$percentage};
+    }
+  }
+}
+
+// create shorthand spacing classes
+$spacer: 1rem;
+$multiple: (1, 2, 3, 4, 5);
+
+/* shorthand spacing classes */
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $num in $multiple {
+    .#{$abbrev}-#{$num} {
+      #{$prop}: $num * 0.5 * $spacer;
+    }
+    .#{$abbrev}t-#{$num} {
+      #{$prop}-top: $num * 0.5 * $spacer;
+    }
+    .#{$abbrev}r-#{$num} {
+      #{$prop}-right: $num * 0.5 * $spacer;
+    }
+    .#{$abbrev}b-#{$num} {
+      #{$prop}-bottom: $num * 0.5 * $spacer;
+    }
+    .#{$abbrev}l-#{$num} {
+      #{$prop}-left: $num * 0.5 * $spacer;
+    }
+    .#{$abbrev}x-#{$num} {
+      #{$prop}-left: $num * 0.5 * $spacer;
+      #{$prop}-right: $num * 0.5 * $spacer;
+    }
+    .#{$abbrev}y-#{$num} {
+      #{$prop}-top: $num * 0.5 * $spacer;
+      #{$prop}-bottom: $num * 0.5 * $spacer;
+    }
+  }
+}
+
+/* shorthand classes related of display and flexbox */
+.d-none {
+  display: none;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-content-start {
+  justify-content: flex-start;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+@each $num in (1, 2, 3) {
+  .flex-grow-#{$num} {
+    flex-grow: $num;
+  }
+}
+
+.flex-basis-100 {
+  flex-basis: 100%;
+}
+
+/* shorthand border-radius classes */
+@each $num in (1, 2) {
+  .rounded-#{$num} {
+    border-radius: $num * 0.25 * $spacer;
+  }
+}
+
+.rounded-circle {
+  border-radius: 50%;
+}

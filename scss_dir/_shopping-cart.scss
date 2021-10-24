@@ -1,0 +1,46 @@
+/* --- Shopping cart --- */
+.shopping-cart {
+  border: 1px solid var(--border-light-color);
+  background-color: var(--shopping-cart-bg);
+  .shopping-list {
+    gap: 16px;
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+    .qty-wrapper {
+      font-size: 14px;
+      font-weight: 500;
+      .qty-controller {
+        color: $dark-gray;
+        width: 26px;
+        height: 26px;
+        background-color: $light-gray;
+        text-align: center;
+        line-height: 26px;
+        font-size: 19px;
+        cursor: pointer;
+        &:hover {
+          background-color: $shadow-gray;
+        }
+        &:active {
+          background-color: $light-gray;
+        }
+      }
+    }
+  }
+  .price-wrapper {
+    font-weight: 700;
+  }
+  .shipping-subtotal,
+  .shopping-price {
+    border-top: 1px solid $light-gray;
+  }
+  @include pc-media {
+    position: absolute;
+    right: 16px;
+    left: calc($max-width / 12 * 7);
+    top: 90px;
+  }
+}
